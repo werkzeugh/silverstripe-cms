@@ -226,7 +226,13 @@ class ContentController extends Controller
             Director::set_current_page($this->data());
 
             try {
-                $response = parent::handleRequest($request);
+                //mwuits: handle AliasPage-Controller begin ------
+                if ($this->isAliasPageController) {
+                    $response=$this->handleFinalRequest($request);
+                } else {
+                    $response = parent::handleRequest($request);
+                }
+                //mwuits: handle AliasPage-Controller end ------
 
                 Director::set_current_page(null);
             } catch (HTTPResponse_Exception $e) {
