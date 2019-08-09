@@ -76,11 +76,9 @@ class ModelAsController extends Controller implements NestedController
      */
     public function handleRequest(HTTPRequest $request)
     {
-
-                // mwuits: hook for MwVhostMapper - Url-Handling ---------- BEGIN
+        // mwuits: hook for MwVhostMapper - Url-Handling ---------- BEGIN
         $request = \MwVhostMapper::handleRequestHook4ModelAsController($request);
         // mwuits: hook for MwVhostMapper - Url-Handling ---------- END
-
 
         $this->beforeHandleRequest($request);
 
